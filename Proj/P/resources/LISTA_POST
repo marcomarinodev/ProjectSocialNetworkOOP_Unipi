@@ -1,0 +1,31 @@
+LISTA DEI POST (postFollowers) <Post, List<SortedSet<String>>>
+<Autore  , likes, tags>
+
+<Mib, likes[George, Fabian, Joseph, TimCook] and tags[]>
+<Mib, likes[Fabian, Joseph] and tags[TimCook]>  TEST GUESSFOLLOWERS POST A
+<Mib, likes[George, TimCook] and tags[]>
+<George, likes[Fabian, Joseph], tags[Mib]>  TEST GUESSFOLLOWERS POST B
+<Fabian, likes[George], tags[Mib]>
+<Joseph, likes[Fabian], tags[Andrea, George]>
+<Joseph, likes[], tags[Mib, TimCook]>
+<Andrea, likes[], tags[]>
+<TimCook, likes[Mib, Joseph, Geroge], tags[Mib]>  TEST GUESSFOLLOWERS POST C
+
+TEST GUESTFOLLOWERS
+DERIVATIVE SN:
+Mib     --> TimCook
+Fabian  --> Mib, George
+Joseph  --> Mib, George, TimCook
+George  --> TimCook
+TimCook --> /
+
+        Post post1 = new Post("Mib", "What a wonderful day!");
+        Post post2 = new Post("Mib", "Another day is gone.");
+        Post post3 = new Post("Mib", "Update is coming!");
+        Post post4 = new Post("George", "This is my first post");
+        Post post5 = new Post("Fabian", "What do you think about USA elections ?");
+        Post post6 = new Post("Joseph", "First day at Microsoft. What a day!");
+        Post post7 = new Post("Joseph", "VSCode editor is open source");
+        Post post8 = new Post("Andrea", "New user here!");
+        Post post9 = new Post("TimCook", "Apple M1 is the best processor on market");
+        Post post10 = new Post("Andrea", "F**k Donald Trump");

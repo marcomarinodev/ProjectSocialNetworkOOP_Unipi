@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RELAZIONE.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="relazione-progetto-java"><strong>Relazione Progetto Java</strong></h1>
+<h2 id="prima-prova-intermedia-aa-20202021">Prima prova intermedia A.A. 2020/2021</h2>
+<h3 id="autore-marco-marin%C3%B2"><strong>Autore:</strong> Marco Marinò</h3>
+<h3 id="matricola-596440"><strong>Matricola:</strong> 596440</h3>
+<br/>
+<br/>
+<h2 id="obiettivo"><strong>Obiettivo:</strong></h2>
+<h3 id="sviluppo-di-una-componente-software-di-supporto-alla-gestione-e-lanalisi-di-una-rete-sociale-social-network"><em>Sviluppo di una componente software di supporto alla gestione e l’analisi di una rete sociale (Social Network)</em></h3>
+<br/>
+<h2 id="indice"><strong>Indice:</strong></h2>
+<ul>
+<li><a href="#come-procedere-nella-lettura-della-documentazione-presente-nel-codice"><strong>Come procedere nella lettura della documentazione presente nel codice</strong></a>
+<ul>
+<li><a href="#interfacce">Interfacce</a></li>
+<li><a href="#classi">Classi</a></li>
+<li><a href="#metodi">Metodi</a></li>
+</ul>
+</li>
+</ul>
+<h2 id=""></h2>
+<ul>
+<li><a href="#lidea"><strong>L'Idea</strong></a></li>
+</ul>
+<h2 id=""></h2>
+<ul>
+<li><a href="#parte-1---post"><strong>Parte 1 - Post</strong></a></li>
+</ul>
+<h2 id=""></h2>
+<ul>
+<li><a href="#parte-2---socialnetwork"><strong>Parte 2 - SocialNetwork</strong></a></li>
+</ul>
+<h2 id=""></h2>
+<ul>
+<li><a href="#parte-3---protectedsocialnetwork-extension"><strong>Parte 3 - ProtectedSocialNetwork</strong></a></li>
+</ul>
+<h2 id=""></h2>
+<ul>
+<li><a href="#nota-sulle-eccezioni"><strong>Nota sulle eccezioni</strong></a></li>
+</ul>
+<h2 id=""></h2>
+<ul>
+<li><a href="#conclusioni"><strong>Conclusioni</strong></a></li>
+</ul>
+<br/>
+<br/>
+<h2 id="come-procedere-nella-lettura-della-documentazione-presente-nel-codice"><strong>Come procedere nella lettura della documentazione presente nel codice</strong></h2>
+<h1 id=""></h1>
+<h3 id="premessa-nella-specifica-viene-utilizzata-la-sintassi-lpp"><em><em><strong>Premessa</strong></em>: nella specifica viene utilizzata la sintassi LPP</em></h3>
+<h1 id=""></h1>
+<br/>
+<h3 id="interfacce">INTERFACCE</h3>
+<p>Nelle interfacce si trovano elementi per definire l'<em><strong>Abstract Data Type</strong></em>:</p>
+<h2 id=""></h2>
+<pre><code>- OVERVIEW (Descrizione del tipo di dato)
+
+- TYPICAL ELEMENT (Elemento che implementa l'interfaccia) 
+</code></pre>
+<h3 id="classi">CLASSI</h3>
+<p>Nelle classi si trovano:</p>
+<h2 id=""></h2>
+<pre><code>- ABSTRACTION FUNCTION
+
+- REPRESENTATION INVARIANT
+</code></pre>
+<h3 id="metodi">METODI</h3>
+<p>I metodi vengono specificati attraverso la descrizione di quattro diverse clausole e una descrizione globale di ciò che fa il metodo considerato. La specifica la si può trovare al di sopra della firma del metodo preso in considerazione.</p>
+<h2 id=""></h2>
+<pre><code>- Descrizione globale del metodo
+
+- REQUIRES =&gt; pre-condizioni
+
+- THROWS =&gt; eccezioni lanciate nel caso una delle pre-condizioni in REQUIRES viene violata
+
+- MODIFIES =&gt; cosa viene modificato nello stato interno dell'Abstract Data Type
+</code></pre>
+<br/>
+<h2 id="lidea"><strong>L'Idea</strong></h2>
+<h1 id=""></h1>
+<h3 id="premessa-allinterno-del-progetto-il-riferimento-a-%22seguirefollow-un-post%22-corrisponder%C3%A0-a-%22mettere-like-a-un-post%22"><em><strong>Premessa:</strong> All'interno del progetto il riferimento a &quot;seguire/follow un post&quot; corrisponderà a &quot;mettere like a un post&quot;</em></h3>
+<h1 id=""></h1>
+<p>La rete sociale esposta dal problema consiste in una <code>Map&lt;String, Set&lt;String&gt;&gt;</code> denominata <code>socialNetwork</code> le cui chiavi rappresentano utenti della rete e il set le persone seguite dal generico utente appartenente alla rete sociale e, logicamente, ogni persona seguita doveva appartenere alla Map stessa. Per poter sviluppare tutti i punti richiesti (in particolare la Parte 2) ho deciso sviluppare altre due strutture dati di supporto, molto simili alla Map vista precedentemente (in seguito vi sarà una spiegazione più approfondita e dettagliata):</p>
+<h2 id=""></h2>
+<ul>
+<li>
+<p>La prima <code>Map&lt;Post, List&lt;SortedSet&lt;String&gt;&gt;</code> denominata <code>postFollowersTags</code> rappresenta una Map in cui a ogni Post (chiave) (il cui autore appartiene alla rete sociale) associo una lista composta da due <code>SortedSet</code> (più avanti viene spiegato come viene mantenuta l'invariante di avere due soli <code>SortedSet</code>):</p>
+<ul>
+<li>il primo <code>SortedSet</code> sarà un insieme ordinato di persone (appartenenti alla rete sociale) che hanno messo like al Post in chiave;</li>
+<li>il secondo <code>SortedSet</code> sarà un insieme ordinato di persone (appartenenti alla rete sociale) che sono state menzionate nel Post indicato in chiave;</li>
+</ul>
+</li>
+<li>
+<p>La seconda <code>Map&lt;String, Integer&gt;</code> denominata <code>topInfluencers</code> rappresenta una Map in cui a ogni stringa (utente appartenente alla rete sociale)</p>
+</li>
+</ul>
+<p>In questa maniera riesco a gestire ogni metodo richiesto dalla Parte 2, per la Parte 3 verrà implementato una estensione della classe SocialNetowrk che gestirà le segnalazioni di post dal contenuto offensivo.</p>
+<h1 id=""></h1>
+<h3 id="altra-premessa-spesso-si-far%C3%A0-riferimento-alla-parola-%22utente%22-e-%22post%22-essi-sono-da-considerare-appartenenti-alla-rete-sociale-rispettivamente-socialnetwork-e-postfollowerstags-in-caso-contrario-verranno-definiti-come-non-appartenenti-inoltre-quando-ci-si-riferisce-alla-frase-%22appartenenti-alla-rete-sociale%22-che-sia-di-un-utente-o-di-un-post-si-intende-che-utente-appartiene-allinsieme-delle-chiavi-di-socialnetwork-e-post-appartiene-allinsieme-delle-chiavi-di-postfollowerstags"><em><strong>Altra premessa:</strong> spesso si farà riferimento alla parola &quot;utente&quot; e &quot;post&quot; essi sono da considerare appartenenti alla rete sociale (rispettivamente socialNetwork e postFollowersTags), in caso contrario verranno definiti come non appartenenti. Inoltre, quando ci si riferisce alla frase &quot;appartenenti alla rete sociale&quot; che sia di un utente o di un post, si intende che utente appartiene all'insieme delle chiavi di <code>socialNetwork</code> e post appartiene all'insieme delle chiavi di <code>postFollowersTags</code></em></h3>
+<h1 id=""></h1>
+<br/>
+<h2 id="parte-1---post"><strong>Parte 1 - Post</strong></h2>
+<h3 id="overview-tipo-di-dato-immutabile-e-identificatbile-attraverso-un-codice-128-bit-universale-e-univoco"><em>OVERVIEW: Tipo di dato immutabile e identificatbile attraverso un codice 128 bit universale e univoco</em></h3>
+<h2 id=""></h2>
+<p>Post è un tipo di dato che viene rappresentato da quattro attributi:</p>
+<h2 id=""></h2>
+<ul>
+<li>
+<p><strong>id:</strong> identificatore univoco del post e nella mia scelta d'implementazione ho deciso di rappresentarlo con il tipo di dato UUID (identificatore pseudo-randomico) (<em>A class that represents an immutable universally unique identifier (UUID). A UUID represents a 128-bit value.</em> <strong>Dalla Documentazione Ufficiale di Java SE 15</strong>) (https://towardsdatascience.com/are-uuids-really-unique-57eb80fc2a87);</p>
+</li>
+<li>
+<p><strong>author:</strong> utente della rete sociale che ha scritto il post. Tipo di dato String;</p>
+</li>
+<li>
+<p><strong>text:</strong> testo del post (il vincolo dei 140 caratteri viene controllato nel processo di aggiunta del post vista in un metodo dedicato presente nella classe SocialNetwork). Tipo di dato String.</p>
+</li>
+<li>
+<p><strong>timestamp:</strong> data e ora di invio del post. Tipo di dato LocalDateTime (<em>LocalDateTime is an immutable date-time object that represents a date-time, often viewed as year-month-day-hour-minute-second.</em> <strong>Dalla Documentazione Ufficiale di Java SE 15</strong>)</p>
+</li>
+</ul>
+<h2 id=""></h2>
+<p>Poiché Post è un tipo di dato immutabile, devo garantire che nessun metodo del Post consenta la modifica dello stato interno e ovviamente che lo stato interno sia privato. Dunque, tutte gli attributi sono private per cui non è consentito l'accesso dall'esterno, l'unico modo per rendere visibili è quello di usare metodi Getter come <code>getID(), getAuthor(), getText(), ...</code>
+Gli unici controlli che vengono fatti durante la creazione dell'istanza <code>Post post = new Post(&quot;nomeUtente)</code> sono sui parametri <code>String user</code> e <code>String textMessage</code> che non devono essere null. Eventuali controlli sulla validità del post (Lunghezza del testo compresa tra 1 e 140, verrà controllato al momento dell'inserimento del post; Nome utente - con numero caratteri compreso tra 6 e 30 e avente caratteri solo alfa numerici - sarà garantito valido durante la pubblicazione del post perché c'è un metodo che aggiunge l'utente (<code>addUser</code> in SocialNetowrk.java) che controlla proprio la validità del nome utente. È presente, inoltre, un metodo toString() per rappresentare in String tutte le informazioni del post.</p>
+<h2 id=""></h2>
+<p>Dunque il costruttore di Post, costruisce un'istanza di tipo Post che avrà dunque un identificatore, un autore, un testo, data e ora in formato HH:mm:ss - dd-MM-yyyy di creazione del post stesso.</p>
+<h2 id=""></h2>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> UUID <span class="hljs-title">getID</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAuthor</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getText</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getDateTimeToString</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>;
+</div></code></pre>
+<br/>
+<h2 id="parte-2---socialnetwork"><strong>Parte 2 - SocialNetwork</strong></h2>
+<h3 id="overview-social-network-%C3%A8-un-tipo-di-dato-mutabile-che-caratterizza-una-rete-sociale"><em>OVERVIEW: Social Network è un tipo di dato mutabile che caratterizza una rete sociale</em></h3>
+<p>Le strutture dati che mantengono la classe SocialNetwork sono:</p>
+<h2 id=""></h2>
+<ul>
+<li><strong>socialNetwork:</strong> come precedentemente visto, si tratta di una <code>Map&lt;String, Set&lt;String&gt;&gt;</code> avente chiavi che rappresentano gli utenti appartenenti alla rete sociale e che mappano valori i quali sono insiemi di <code>String</code> che rappresentano utenti che segue l'utente specificato in chiave. Dunque, nei valori di questa variabile si trovano <strong>esclusivamente</strong> utenti che sono presenti come chiave nella variabile stessa (Invariante). Si è voluto implementare <code>socialNetwork</code> con una TreeMap per garantire l'ordine alfabetico delle chiavi. Secondo la documentazione <code>TreeMap</code> non accetta chiavi nulle e le chiavi devono essere <code>Comparable</code> quindi va bene per il nostro scopo poiché <code>String</code> è <code>Comparable</code>. In questo modo facciamo un accesso di costo <code>O(log n)</code>, più costoso di un accesso usando le <code>HashMap</code> (ausilio delle tabelle hash <code>O(1 + load factor)</code>, ma <code>TreeMap</code> ci consente di risparmiare memoria poiché non allochiamo lo spazio per la tabella hash, quindi, per il nostro obiettivo può risultare utile risparmiare memoria in quanto ci possono essere molti utenti che usano la piattaforma.</li>
+</ul>
+<br/>
+<pre class="hljs"><code><div><span class="hljs-keyword">protected</span> Map&lt;String, Set&lt;String&gt;&gt; socialNetwork;
+
+...
+
+socialNetwork = <span class="hljs-keyword">new</span> TreeMap&lt;String, Set&lt;String&gt;&gt;();
+</div></code></pre>
+<br/>
+<ul>
+<li><strong>postFollowersTags:</strong> questa è una <code>Map&lt;Post, List&lt;SortedSet&lt;Post&gt;&gt;&gt;</code> le cui chiavi di tipo Post sono mappate in valori di tipo <code>List&lt;SortedSet&lt;String&gt;&gt;&gt;</code>. Prima di tutto vediamo che in questo caso è stato scelto d'implementare una <code>HashMap</code> piuttosto che una <code>TreeMap</code> perché un <code>Post</code>, per scelta d'implementazione, non è <code>Comparable</code>. L'invariante per questo attributo è che ogni <code>Post</code> in chiave è un post il cui autore è una chiave di <code>socialNetwork</code>. I valori mappati dalle chiavi sono di tipo <code>List&lt;SortedMap&lt;String&gt;&gt;&gt;</code> e queste liste hanno dimensione fissata 2:
+<ul>
+<li>il primo elemento rappresenta un insieme ordinato di utenti (<code>SortedSet&lt;String&gt;</code>) che hanno messo like/seguono il post indicato in chiave.</li>
+<li>il secondo elemento rappresenta un insieme ordinato di utenti (<code>SortedSet&lt;String&gt;</code>) che sono stati menzionati nel post indicato in chiave.
+Ci sono dei vincoli, come dichiarato nella specifica, tali per cui in un post non ci possono essere tra i like e tra i tags(menzionati) l'autore del post stesso, di fatto, vengono lanciate due eccezioni a runtime <code>IllegalFollowException</code> e <code>IllegalTagException</code>.</li>
+</ul>
+</li>
+</ul>
+<br/>
+<h1 id=""></h1>
+<p>Una precisazione: c'è un'invariante che garantisce che ogni elemento di lista e/o di set viene inizializzato correttamente, in quando ogni volta che si aggiunge un post, o un utente, viene prima allocato lo spazio correttamente. Quest'ultimo è ben definito nel codice.</p>
+<h1 id=""></h1>
+<br/>
+<pre class="hljs"><code><div><span class="hljs-keyword">protected</span> Map&lt;Post, List&lt;SortedSet&lt;String&gt;&gt;&gt; postFollowersTags;
+
+...
+
+postFollowersTags = <span class="hljs-keyword">new</span> HashMap&lt;Post, List&lt;SortedSet&lt;String&gt;&gt;&gt;();
+</div></code></pre>
+<br/>
+<ul>
+<li><strong>topInfluencers:</strong> struttura dati di tipo <code>Map&lt;String, Integer&gt;</code> che mappa utenti presenti in <code>socialNetwork.keySet()</code> in un intero che rappresenta il numero di utenti che seguono l'utente in chiave. Il metodo <code>addFollower</code> garantisce che se il parametro <code>username</code> è la prima volta che mette like a un post del <code>postAuthor</code> (si veda nella specifica) allora automaticamente viene incrementato il numero di seguaci di <code>postAuthor</code> presente in <code>topInfluencers</code>. Ma come viene garantito il fatto che in <code>topInfluencers</code> ci sia nell'insieme delle chiavi <code>postAuthor</code>? Durante l'inserimento di un utente attraverso il metodo <code>addUser</code> viene allocato e inserito <code>postAuthor</code>, inizialmente, con 0 seguaci, poi ogni volta che il metodo <code>addFollower</code> aggiunge un like a un post allora viene attivato il meccanismo precedentemente spiegato.</li>
+</ul>
+<br/>
+<pre class="hljs"><code><div><span class="hljs-keyword">protected</span> Map&lt;String, Integer&gt; topInfluencers; 
+
+...
+
+topInfluencers = <span class="hljs-keyword">new</span> TreeMap&lt;String, Integer&gt;();
+</div></code></pre>
+<br/>
+<h2 id="descrizione-meccanismo-dinserimentorimozione-like-ad-un-post"><strong>Descrizione meccanismo d'inserimento/rimozione like ad un post</strong></h2>
+<p>In questo paragrafo discuto di come sia possibile inserire e/o rimuovere un like da un post e gli effetti che questa azione ha sulle strutture dati.</p>
+<h3 id=""></h3>
+<p>È consigliabile visionare la classe TestClass.java in cui è presente la batteria di test per capire meglio.</p>
+<h3 id=""></h3>
+<p>Il metodo <code>addFollower</code> prende in ingresso <code>String username, UUID postID</code> per indicare che l'utente (c'è un controllo che verifica tale condizione) <code>username</code> vuole mettere like al post identificato con <code>postID</code> (c'è un controllo che verifica se il post è presente nella rete sociale (quindi se è presente come chiave in <code>postFollowersTags</code>)). Qualora tutte le condizioni indicate nella specifica in REQUIRES siano soddisfatte allora va a cercare in <code>postFollowersTags</code> il post, entra nella lista bidimensionale, in particolare entra nel primo <code>SortedSet</code> <code>... .get(0)</code> e aggiunge <code>username</code> se non presente, qualora fosse presente, semplicemente non aggiunge. Quello che fa questo metodo è non solo aggiungere il like, ma anche inserire in <code>socialNetwork.get(username)</code> l'autore del post, qualora fosse già presente allora non aggiunge (definizione di Set). Un'altra cosa che fa questo metodo è quello detto in precedenza, ovvero, qualora fosse la prima volta che <code>username</code> mette like all'autore del post allora incrementa <code>topInfluencers.get(postAuthor)</code>. Il meccanismo di rimozione di un utente è gestito dal metodo <code>removeFollowerFromPost</code> che è molto simile a quello di <code>addFollower</code>, ma funziona in maniera inversa.</p>
+<h3 id=""></h3>
+<p>Per l'inserimento dei tag, si fa quasi la stessa cosa dell'aggiunta dei likes, ma invece viene preso il secondo set <code>... .get(1)</code> e viene aggiunto se assente il menzionato. Ricordiamo che viene seguita una politica del tipo: l'autore del post non può nè mettere like a un suo post nè menzionarsi in un suo post.</p>
+<h3 id=""></h3>
+<p>Ulteriori dettagli implementativi sono descritti nella specifica del codice. (Consigliato).</p>
+<h3 id=""></h3>
+<p>Nella classe <code>SocialNetwork</code> vi sono presenti, inoltre, tutti i metodi richiesti dalla traccia che sono stati resi funzionanti grazie all'implementazione dei metodi precedentemente analizzati.</p>
+<br/>
+<br/>
+<h2 id="parte-3---protectedsocialnetwork-extension"><strong>Parte 3 - ProtectedSocialNetwork extension</strong></h2>
+<h3 id="overview-protectedsocialnetwork-%C3%A8-un-tipo-di-dato-mutabile-che-rappresenta-una-rete-sociale-a-partire-dai-metodi-e-attributi-ereditati-dalla-classe-socialnetwork-in-questa-estensione-si-pu%C3%B2-controllare-che-il-conenuto-di-un-testo-di-un-post-durante-la-sua-pubblicazione-addpost-sia-privo-di-parole-cattive-che-si-possono-reperire-nel-notallowedwordsjson-inoltre-si-possono-segnalare-contenuti-offensivi-e-ogni-segnalazione-viene-memorizzata-in-poststocontroljson"><em>OVERVIEW: ProtectedSocialNetwork è un tipo di dato mutabile che rappresenta una rete sociale a partire dai metodi e attributi ereditati dalla classe SocialNetwork. In questa estensione si può controllare che il conenuto di un testo di un post durante la sua pubblicazione (addPost) sia privo di parole cattive (che si possono reperire nel not_allowed_words.json). Inoltre, si possono segnalare contenuti offensivi e ogni segnalazione viene memorizzata in posts_to_control.json.</em></h3>
+<br/>
+<h3 id="scelta-dimplementazione"><strong>Scelta d'implementazione</strong></h3>
+<br/>
+<p>Per gestire la Parte 3 del progetto ho deciso di realizzare un meccanismo di segnalazione (report) di post con contenuto offensivo o non adeguato secondo il regolamento della rete sociale, qui ne viene spiegato il funzionamento.</p>
+<h2 id=""></h2>
+<p>La classe <code>ProtectedSocialNetwork</code> che estende <code>SocialNetwork</code> e implementa l'interfaccia <code>ProtectedSocialNetworkInterface</code>, si occupa non solo di gestire tutti le funzionalità descritte nella Parte 2, ma anche di aggiungere:</p>
+<ul>
+<li>un controllo automatico che si attiva quando si tenta di pubblicare un post con <code>addPost</code> il quale rileva se nel testo del post preso in parametro ci sono delle parole non accettabili presenti nel <code>Set&lt;String&gt;</code> (più avanti viene descritto come viene riempito questo <code>Set</code>); qualora ci fossero parole non accettabili allora lancia <code>BadWordsException</code>.</li>
+<li>un metodo <code>addDangerousReport</code> che raccoglie una segnalazione con parametri <code>String username, UUID idToReport, Integer dangerDegree, String motivation</code>. Questo metodo, qualora vengano soddisfatti tutti i REQUIRES, aggiunge in un file JSON (<em>posts_to_control.json</em>) il report (<strong>in questo modo si potrebbe rappresentare una soluzione reale, in cui il file JSON viene caricato nel server e controllato da moderatori o algoritmi di Machine Learning che capiscono se il contenuto è davvero offensivo</strong>)</li>
+</ul>
+<h2 id=""></h2>
+<h3 id="struttura-dati"><strong>Struttura Dati</strong></h3>
+<p>La struttura dati di questa classe è la stessa della sua classe padre (<code>SocialNetwork</code>) in aggiunta vi è un <code>Set&lt;String&gt; badWords</code> che come detto prima, rappresenta un insieme di parole non ammesse in un post della rete sociale.</p>
+<br/>
+<pre class="hljs"><code><div><span class="hljs-keyword">private</span> Set&lt;String&gt; badWords;
+
+...
+
+badWords = <span class="hljs-keyword">new</span> TreeSet&lt;String&gt;();
+</div></code></pre>
+<br/>
+<p>Per ulteriori dettagli sull'implementazione, si faccia riferimento alla Specifica riportata nel progetto.</p>
+<h2 id="nota-sulle-eccezioni"><strong>Nota sulle eccezioni</strong></h2>
+<p>Per poter garantire maggiore protezione ho voluto rappresentare le eccezioni del programma come estensione gerarchica di <code>Exception</code>, quindi eccezioni checked.</p>
+<ul>
+<li><code>BadWordsException</code> viene lanciata qualora venga rilevata una parola non ammessa nel post</li>
+<li><code>EmptyNetworkException</code> viene lanciata nel momento in cui <code>socialNetwork</code> è vuota</li>
+<li><code>EmptyPostException</code> viene lanciata quando, durante la pubblicazione, il post ha un messaggio vuoto</li>
+<li><code>EmptyPostsException</code> viene lanciata quando <code>postFollowers</code> è vuota</li>
+<li><code>IllegalFollowException</code> viene lanciata quando si vuole aggiungere un like e l'utente che vuole mettere like, mette like a un post il cui autore è l'utente stesso</li>
+<li><code>IllegalTagException</code> viene lanciata quando si vuole aggiungere un tag/menzione e l'utente che si vuole taggare nel post è l'autore del post stesso</li>
+<li><code>NoFollowerInPostException</code> viene lanciata quando si tenta di compiere un'azione su un follower in un post, ma quel follower non è presente nella lista di chi ha messo like a quel post</li>
+<li><code>NoPostInNetworkException</code> viene lanciata quando si tenta di compiere un'azione su un post non presente nella rete sociale (<code>postFollowersTags</code>)</li>
+<li><code>PostException</code> eccezione generica per identificare un errore durante la pubblicazione o l'azione di un post nella rete sociale</li>
+<li><code>TextTooLongException</code> viene lanciata quando, durante la pubblicazione, il testo di un post supera i 140 caratteri</li>
+<li><code>UserAlreadyExistsException</code> viene lanciata quando si tenta di aggiungere un utente nella rete sociale, ma questo utente esiste già</li>
+<li><code>UserException</code> eccezione generica per identificare un errore durante la aggiunta o l'azione di un utente nella rete sociale</li>
+<li><code>UsernameNotAllowedException</code> viene lanciato quando, durante l'aggiunta di un utente nella rete sociale, l'username dell'utente non ha dei caratteri validi</li>
+<li><code>UserNotInSocialNetworkException</code> viene lanciato quando si tenta di eseguire un'azione su un utente che non esiste nella rete sociale</li>
+</ul>
+<h2 id="conclusioni"><strong>Conclusioni</strong></h2>
+<p>Questo progetto, è servito per applicare tutti i concetti di OOP visti a lezione quali Encapsulation, Information Hiding, Inheritance e Polymorphism. Questo progetto potrà essere modificato nel corso del tempo per supportare altre funzionalità, lascio il link a GitHub.</p>
+<p><a href="https://github.com/marcomarinodev">https://github.com/marcomarinodev</a></p>
+
+</body>
+</html>

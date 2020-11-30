@@ -1,0 +1,8 @@
+SOCIAL_NETWORK <Username, Following> 
+-------------------------------------
+Mib     :   TimCook
+George  :   Mib, TimCook, Fabian
+Fabian  :   Mib, George, Joseph
+Joseph  :   Mib, TimCook, George
+TimCook :   Mib
+Andrea  :   /
